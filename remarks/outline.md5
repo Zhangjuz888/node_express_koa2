@@ -1,0 +1,83 @@
+1、什么是服务端？和前端的关联关系，服务端功能和职责是什么？
+举个例子，web系统就像是一棵树，前端好比看得到的枝叶，服务端就好比根须为前端提供支撑和营养；
+服务端职责：
+1、提供前端要展示的数据；
+2、接受前端要提交的数据；
+3、存储和收集各种数据；
+
+服务端表现形式：
+前端在ajax请求之前所调用的某个接口，这个接口是需要服务端进行提供的； 如get、post请求获取数据
+
+从狭义的角度来说我们看到的是网页，从广义的角度来说我们看到的是各种客户端（APP、小程序、PC、H5）；
+
+2、前端和服务端如何交互？
+首先前后端交互必须在http协议的基础之上，http（HyperText Transfer Protocol 超文本传输协议）规定了客户端和服务端之间如何通讯, 
+并且是整个网络通信的标准和基石；
+
+3、HTTP协议通用：
+url: 后端接口请求地址，即前端ajax请求时访问的地址
+method: 请求方法，如 GET、POST、PUT、DELETE等
+状态码：接口请求后反馈的状态 404、200、302、500
+
+4、HTTP协议Request
+Request: 请求，前端往服务端发送的数据
+Request Body: 请求是发送后端的数据
+Request Content-type: 发送数据的格式，如JSON格式
+
+5、HTTP协议Response
+Response：返回/响应，服务端返回给前端
+Response Body: 后端返回给前端的数据
+Response Content-type: 返回数据格式 如 JSON格式
+
+一个前端页面对应不同的服务端
+1、静态服务（js、css）
+2、数据服务（增删改查的数据）
+
+服务端如何处理并返回数据？
+1、定义前端请求的URL规则 ———— 路由;
+2、用Request获取数据，用Response返回数据
+3、读取和存储数据 ———— 数据库；
+
+路由是什么？
+路由（Router）服务端的入口规则，和前端约定；
+总结：
+1、规定服务端的入口，入口即单个的功能；
+2、定义method，url规则，输入输出格式；
+
+路由包含什么？
+1、定义method， 如GET/POST等；
+2、定义url规则，如/api/list 和 /api/create
+3、定义输入（Request body）和输出（Response body）格式
+
+路由代码示例：
+// 前缀
+router.prefix('/api');
+// 获取博客列表
+router.get('/list', loginCheck, async  function (ctx, next) {
+    // 省略 N 行
+    
+    ctx.body = {
+        errno: 0,
+        data: blogList
+    }
+})
+
+数据库；
+总结：定义前端请求的URL规则——路由，用Request获取数据，用Response返回数据，再到数据库读取和存储数据
+1、数据库专职做数据存储和查询；
+2、数据库是一个独立的系统
+3、数据库不是一个JSON数据
+
+为什么选nodeJs开发服务端？
+首先不同语言都能实现服务端的职责，本质上都是处理http请求，都可以定义路由，提供前端进行使用，都是使用数据库，存储和查询数据；
+1、nodeJS使用的是JS语法，前端工程师熟悉；
+2、nodeJS使用npm作为软件包；
+3、省略较大的学习成本，只需学习框架和API；
+
+ECMAScript、nodeJS和javaScript的区别：
+1、ECMAScript 定义了语法，写JavaScript和nodeJS都必须遵守；例如：变量定义、循环、判断、函数、原型、原型链、作用域和闭包、异步；
+首先它不能操作DOM，不能监听click事件，不能发送ajax请求，不能处理http请求，不能操作文件，如果只有ECMAScript几乎完成不了项目；
+2、JavaScript 使用了ECMAScript语法规范，外加Web API，缺一不可！例如：DOM操作，BOM（JavaScript 程序与浏览器交互的能力）操作，
+事件绑定，ajax等；只有 ECMAScript和javaScript两者结合起来，才能完成浏览器的操作；
+3、nodeJS同样也是使用了ECMAScirpt语法规范，外加nodeJsApi，例如处理http请求、处理文件等，两者结合的情况下操作server（服务端）的任何操作；
+
