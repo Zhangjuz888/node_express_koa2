@@ -1,0 +1,20 @@
+# Build directories
+dist
+node_modules/
+node_modules0/
+
+
+# Editor directories and files
+.DS_Store
+__MACOSX
+.idea
+.vscode
+*.suo
+
+# Log files
+*debug.log
+*error.log
+
+
+# 压缩后的init
+*/public/init/
